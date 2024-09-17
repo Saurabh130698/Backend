@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: backend
+
+#  security:
+#    user:
+#      name: user
+#      password: user
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+#    security:
+#        oauth2:
+#            client:
+#                registration:
+#                    github:
+#                        clientId: Ov23liE4hOJ0AhHkq24W
+#                        clientSecret: 864505da1cad106e640f6ef0e863b10316bb795a
