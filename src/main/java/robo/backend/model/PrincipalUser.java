@@ -3,14 +3,16 @@ package robo.backend.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import robo.backend.Entity.User;
+
 import java.util.Collection;
 import java.util.Collections;
 
 public class PrincipalUser implements UserDetails {
 
-    private Users user;
+    private User user;
 
-    public PrincipalUser(Users user) {
+    public PrincipalUser(User user) {
         this.user = user;
     }
 

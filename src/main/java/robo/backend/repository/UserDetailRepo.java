@@ -2,12 +2,18 @@ package robo.backend.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
-import robo.backend.model.Users;
+import robo.backend.Entity.User;
 
+import java.util.Optional;
+
+@EnableJpaRepositories
 @Repository
-public interface UserDetailRepo extends JpaRepository<Users, Integer> {
+public interface UserDetailRepo extends JpaRepository<User, Long> {
 
-    Users findByUsername(String username);
+    Optional<User> findOneByUsernameAndPassword(String username, String password);
+    User findByUsername(String username);
+    User findByEmail(String email);
 }
 

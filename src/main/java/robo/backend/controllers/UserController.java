@@ -13,4 +13,5 @@ public class UserController {
         return ResponseEntity.ok("This is for public users");
     }
 
+
 }
