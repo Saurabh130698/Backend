@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import robo.backend.Dto.LoginDTO;
 import robo.backend.Dto.UserDTO;
-import robo.backend.Entity.User;
+import robo.backend.model.User;
 import robo.backend.Response.LoginResponse;
 import robo.backend.Response.SaveUserResponse;
 import robo.backend.repository.UserDetailRepo;
@@ -58,10 +58,10 @@ public class UserImpl implements UserService {
                     return new LoginResponse("Login Failed", false);
                 }
             }else {
-                return new LoginResponse("Password Not Match", false);
+                return new LoginResponse("Incorrect password", false);
             }
         }else {
-            return new LoginResponse("Username Not exits", false);
+            return new LoginResponse("Incorrect username", false);
         }
     }
 }

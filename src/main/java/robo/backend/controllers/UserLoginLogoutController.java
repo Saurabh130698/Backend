@@ -2,6 +2,7 @@ package robo.backend.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import robo.backend.Dto.LoginDTO;
@@ -21,13 +22,19 @@ public class UserLoginLogoutController {
     @PostMapping("/save")
     public ResponseEntity<?> saveUsers(@RequestBody UserDTO usersDTO){
         SaveUserResponse response = userService.addUser(usersDTO);
-        return ResponseEntity.ok(response);
+        if(!response.getStatus()){
+            return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
+        }
+        return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO)
     {
         LoginResponse loginResponse = userService.loginUser(loginDTO);
-        return ResponseEntity.ok(loginResponse);
+        if(!loginResponse.getStatus()){
+            return new ResponseEntity<>(loginResponse,HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(loginResponse,HttpStatus.OK);
     }
 }
