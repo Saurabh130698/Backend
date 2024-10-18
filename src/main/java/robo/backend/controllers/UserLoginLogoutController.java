@@ -39,8 +39,4 @@ public class UserLoginLogoutController {
         }
         return new ResponseEntity<>(loginResponse,HttpStatus.OK);
     }
-
-
-    
-
 }
