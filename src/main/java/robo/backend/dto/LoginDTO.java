@@ -1,4 +1,4 @@
-package robo.backend.Dto;
+package robo.backend.dto;
 
 public class LoginDTO {
 

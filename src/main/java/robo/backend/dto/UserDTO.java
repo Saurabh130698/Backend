@@ -1,4 +1,8 @@
-package robo.backend.Dto;
+<<<<<<<< HEAD:src/main/java/robo/backend/model/User.java
+package robo.backend.model;
+========
+package robo.backend.dto;
+>>>>>>>> c403f79 (updated Http status code on basis of response and validation):src/main/java/robo/backend/dto/UserDTO.java
 
 public class UserDTO {
 

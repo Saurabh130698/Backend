@@ -5,8 +5,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import robo.backend.model.User;
+
 import robo.backend.model.PrincipalUser;
+import robo.backend.model.User;
 import robo.backend.repository.UserDetailRepo;
 
 @Service

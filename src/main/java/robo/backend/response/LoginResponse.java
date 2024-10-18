@@ -1,17 +1,16 @@
-package robo.backend.Response;
+package robo.backend.response;
 
-public class SaveUserResponse {
+public class LoginResponse {
+
     String message;
-    String username;
     Boolean status;
 
-    public SaveUserResponse(String message, String username, Boolean status) {
+    public LoginResponse(String message, Boolean status) {
         this.message = message;
-        this.username = username;
         this.status = status;
     }
 
-    public SaveUserResponse() {
+    public LoginResponse() {
     }
 
     public String getMessage() {
@@ -20,14 +19,6 @@ public class SaveUserResponse {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Boolean getStatus() {
@@ -40,9 +31,8 @@ public class SaveUserResponse {
 
     @Override
     public String toString() {
-        return "SaveUserResponse{" +
+        return "LoginResponse{" +
                 "message='" + message + '\'' +
-                ", username='" + username + '\'' +
                 ", status=" + status +
                 '}';
     }

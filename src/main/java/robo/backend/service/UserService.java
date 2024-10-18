@@ -1,9 +1,9 @@
 package robo.backend.service;
 
-import robo.backend.Dto.LoginDTO;
-import robo.backend.Dto.UserDTO;
-import robo.backend.Response.SaveUserResponse;
-import robo.backend.Response.LoginResponse;
+import robo.backend.dto.LoginDTO;
+import robo.backend.dto.UserDTO;
+import robo.backend.response.LoginResponse;
+import robo.backend.response.SaveUserResponse;
 
 public interface UserService {
 

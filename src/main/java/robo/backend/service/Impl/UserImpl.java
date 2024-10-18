@@ -3,12 +3,13 @@ package robo.backend.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import robo.backend.Dto.LoginDTO;
-import robo.backend.Dto.UserDTO;
+
+import robo.backend.dto.LoginDTO;
+import robo.backend.dto.UserDTO;
 import robo.backend.model.User;
-import robo.backend.Response.LoginResponse;
-import robo.backend.Response.SaveUserResponse;
 import robo.backend.repository.UserDetailRepo;
+import robo.backend.response.LoginResponse;
+import robo.backend.response.SaveUserResponse;
 import robo.backend.service.UserService;
 
 import java.util.Optional;
@@ -44,7 +45,6 @@ public class UserImpl implements UserService {
 
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
-        String msg = "";
         User user1 = userDetailRepo.findByUsername(loginDTO.getUsername());
         if(user1 != null){
             String password = loginDTO.getPassword();
@@ -59,9 +59,10 @@ public class UserImpl implements UserService {
                 }
             }else {
                 return new LoginResponse("Incorrect password", false);
+                return new LoginResponse("Incorrect password", false);
             }
         }else {
-            return new LoginResponse("Incorrect username", false);
+            return new LoginResponse("Username not found", false);
         }
     }
 }
