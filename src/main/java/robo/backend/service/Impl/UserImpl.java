@@ -59,7 +59,6 @@ public class UserImpl implements UserService {
                 }
             }else {
                 return new LoginResponse("Incorrect password", false);
-                return new LoginResponse("Incorrect password", false);
             }
         }else {
             return new LoginResponse("Username not found", false);
