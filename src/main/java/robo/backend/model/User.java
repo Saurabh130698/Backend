@@ -1,14 +1,15 @@
 package robo.backend.model;
 
+import java.util.Date;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Data
-@Table(name="users")
 @Entity
+@Table(name="users")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -27,4 +28,6 @@ public class User {
     @Column(name = "password", length = 255)
     private String password;
 
+    // @Temporal(TemporalType.TIMESTAMP)
+	// private Date createdate = new Date(System.currentTimeMillis());;
 }
