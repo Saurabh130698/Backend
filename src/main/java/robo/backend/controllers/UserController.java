@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import robo.backend.dto.LoginDTO;
@@ -20,7 +19,6 @@ import robo.backend.service.Impl.UserImpl;
 
 @RestController
 @CrossOrigin
-// @RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -39,7 +37,7 @@ public class UserController {
     public ResponseEntity<?> register(@RequestBody UserDTO usersDTO)
     {
         SaveUserResponse response = userService.addUser(usersDTO);
-        if(response.getStatus() == false){
+        if(!response.getStatus()){
             return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
         }
         return new ResponseEntity<>(response,HttpStatus.CREATED);
@@ -55,7 +53,7 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO)
     {
         LoginResponse loginResponse = userService.loginUser(loginDTO);
-        if(loginResponse.getStatus() == false){
+        if(!loginResponse.getStatus()){
             return new ResponseEntity<>(loginResponse,HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(loginResponse,HttpStatus.OK);

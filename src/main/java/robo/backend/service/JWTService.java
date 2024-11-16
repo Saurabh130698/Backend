@@ -10,7 +10,6 @@ import java.util.function.Function;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -80,12 +79,5 @@ public class JWTService {
         return extractClaim(jwtToken, Claims::getExpiration);
     }
 
-
-    // private Key getKey() throws NoSuchAlgorithmException{
-    //     KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
-    //     SecretKey key = keyGen.generateKey();
-
-    //     return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5hdmluIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE1MTYyNDAyNH0.SVkl_u2Ev7ThYMAcSosUv5n1IN40e4kD87SO4Gnz8IQ";
-    // }
 
 }
