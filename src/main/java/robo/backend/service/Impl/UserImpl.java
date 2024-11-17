@@ -61,32 +61,33 @@ public class UserImpl implements UserService {
             if (isPwdRight){
                 Optional<User> user = userDetailRepo.findOneByUsernameAndPassword(loginDTO.getUsername(), encodedPassword);
                 if(user.isPresent()){
-                    return new LoginResponse("Login Success", true);
+                    return new LoginResponse("200", loginDTO.getUsername(), true,"Login Success" , jwtService.generateToken(loginDTO.getUsername()));
                 }else {
-                    return new LoginResponse("Login Failed", false);
+                    return new LoginResponse("400",loginDTO.getUsername(), false,"Login Failed", "");
                 }
             }else {
-                return new LoginResponse("Incorrect password", false);
+                return new LoginResponse("400",loginDTO.getUsername(), false,"Incorrect password", "");
             }
         }else {
-            return new LoginResponse("Username not found", false);
+            return new LoginResponse("400",loginDTO.getUsername(), false,"Username not found", "");
         }
     }
 
     public String verify(LoginDTO loginDTO) {
         User user1 = userDetailRepo.findByUsername(loginDTO.getUsername());
-        String password = loginDTO.getPassword();
-        String encodedPassword = user1.getPassword();
-        Boolean isPwdRight =passwordEncoder.matches(password, encodedPassword);
-        if (isPwdRight){
-            Optional<User> user = userDetailRepo.findOneByUsernameAndPassword(loginDTO.getUsername(), encodedPassword);
-            if(user.isPresent()){
-                return jwtService.generateToken(loginDTO.getUsername());
+        if(user1 != null) {
+            String password = loginDTO.getPassword();
+            String encodedPassword = user1.getPassword();
+            Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
+            if (isPwdRight) {
+                Optional<User> user = userDetailRepo.findOneByUsernameAndPassword(loginDTO.getUsername(), encodedPassword);
+                if (user.isPresent()) {
+                    return jwtService.generateToken(loginDTO.getUsername());
+                }
             }
         }
-        
         return "Invalid username or password";
-                 
+
     }
 
 }

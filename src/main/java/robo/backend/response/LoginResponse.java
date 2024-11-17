@@ -2,12 +2,18 @@ package robo.backend.response;
 
 public class LoginResponse {
 
+    String statusCode;
+    String authToken;
     String message;
     Boolean status;
+    String userName;
 
-    public LoginResponse(String message, Boolean status) {
-        this.message = message;
+    public LoginResponse(String statusCode, String userName, Boolean status, String message, String authToken) {
+        this.statusCode = statusCode;
+        this.userName = userName;
         this.status = status;
+        this.message = message;
+        this.authToken = authToken;
     }
 
     public LoginResponse() {
@@ -29,11 +35,38 @@ public class LoginResponse {
         this.status = status;
     }
 
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
         return "LoginResponse{" +
-                "message='" + message + '\'' +
+                "statusCode='" + statusCode + '\'' +
+                ", authToken='" + authToken + '\'' +
+                ", message='" + message + '\'' +
                 ", status=" + status +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 }
