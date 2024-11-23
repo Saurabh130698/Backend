@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="users")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class User {
 
     @Id
@@ -28,6 +25,55 @@ public class User {
     @Column(name = "password", length = 255)
     private String password;
 
-    // @Temporal(TemporalType.TIMESTAMP)
-	// private Date createdate = new Date(System.currentTimeMillis());;
+    public User(long id, String email, String username, String password) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

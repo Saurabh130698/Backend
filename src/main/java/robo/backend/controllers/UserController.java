@@ -43,12 +43,6 @@ public class UserController {
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
 
-    @PostMapping("/auth_token")
-    public String login(@RequestBody LoginDTO loginDTO)
-    {
-        return userImpl.verify(loginDTO);
-    }
-
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO)
     {
