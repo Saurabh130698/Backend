@@ -41,9 +41,9 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorize -> authorize
-                                .requestMatchers("/register", "/login")
-                                .permitAll()
-                                .anyRequest().authenticated())
+                                .requestMatchers("api/users/register", "api/users/login", "api/health/check").permitAll()
+                                .anyRequest().authenticated()
+                )
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> 
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -62,5 +62,5 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager (AuthenticationConfiguration config) throws Exception{
         return config.getAuthenticationManager();
-    } 
+    }
 }
