@@ -72,4 +72,11 @@ public class UserImpl implements UserService {
             return new LoginResponse("400",loginDTO.getUsername(), false,"Username not found", "");
         }
     }
+
+    @Override
+    public User getUserById(long id){
+        return userDetailRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+    }
 }

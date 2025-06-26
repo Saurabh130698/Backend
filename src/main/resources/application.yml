@@ -2,7 +2,7 @@ spring:
   application:
     name: backend
 
-#  security:
+  #  security:
 #    user:
 #      name: user
 #      password: user

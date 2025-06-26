@@ -21,7 +21,7 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JWTService {
 
-    private String secreteKey = "";
+    private String secreteKey;
 
     public JWTService () throws NoSuchAlgorithmException{
         KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
@@ -38,7 +38,7 @@ public class JWTService {
                   .add(claims)
                   .subject(username)
                   .issuedAt(new Date(System.currentTimeMillis()))
-                  .expiration(new Date(System.currentTimeMillis() + 60 * 60 * 15))
+                  .expiration(new Date(System.currentTimeMillis() + 60 * 15 * 1000))
                   .and()
                   .signWith(getKey())
                   .compact();
